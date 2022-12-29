@@ -7,7 +7,7 @@ namespace recipe_server.Models
 {
 public class Recipe
 {
-    public string? Name { get; set; }
+    public string Name { get; set; } = "Burger";
     public List<Ingredient>? Ingredients { get; set; }
     public string? Instructions { get; set; }
     public NutritionalInformation? NutritionalInformation { get; set; }

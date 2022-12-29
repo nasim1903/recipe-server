@@ -38,7 +38,7 @@ namespace recipe_server.Services
             },
             new Recipe
             {
-                Name = "Oatmeal raisin cookies",
+                Name = "Chicken burger",
                 Ingredients = new List<Ingredient>
             {
                 new Ingredient { Name = "Flour", Amount = "1 cup" },
@@ -70,6 +70,13 @@ namespace recipe_server.Services
         public List<Recipe> GetRecipes()
         {
             return (newRecipe);
+        }
+
+        public List<Recipe> GetRecipesByName(string name)
+        {   
+            var bySearch = newRecipe.Where(c => c.Name.ToLower().Contains(name)).ToList();
+            
+            return (bySearch);
         }
     }
 

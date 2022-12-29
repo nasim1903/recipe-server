@@ -8,5 +8,6 @@ namespace recipe_server.Services
     public interface iRecipeService
     {
         public List<Recipe> GetRecipes();
+        public List<Recipe> GetRecipesByName(string name);
     }
 }
