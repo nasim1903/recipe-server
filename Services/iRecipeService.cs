@@ -7,9 +7,9 @@ namespace recipe_server.Services
 {
     public interface iRecipeService
     {
-        public List<Recipe> GetRecipes();
-        public List<Recipe> GetRecipesByName(string name);
-        public List<Recipe> CreateRecipe(List<Recipe> recipes);
+        public Task<ServiceResponse<List<Recipe>>> GetRecipes();
+        public Task<ServiceResponse<List<Recipe>>> GetRecipesByName(string name);
+        public Task<ServiceResponse<List<Recipe>>> CreateRecipe(List<Recipe> recipes);
         // public List<Recipe> GetIngredient(string[] name);
     }
 }

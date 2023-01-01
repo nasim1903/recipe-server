@@ -25,9 +25,9 @@ namespace recipe_server.Controllers
             return Ok(_recipeService.GetRecipes());
         }
         [HttpGet("search/name")]
-        public ActionResult<Recipe> GetSearch(string name)
+        public async Task<ActionResult<ServiceResponse<Recipe>>> GetSearch(string name)
         {
-            return Ok(_recipeService.GetRecipesByName(name));
+            return Ok(await _recipeService.GetRecipesByName(name));
         }
         // [HttpGet("search/ingredient")]
         // public ActionResult<Recipe> GetIngredient(string[] ingredients)
@@ -36,8 +36,8 @@ namespace recipe_server.Controllers
         // }
 
         [HttpPost("post")]
-        public ActionResult<List<Recipe>> createRecipe(List<Recipe> recipes){
-            return Ok(_recipeService.CreateRecipe(recipes));
+        public async Task<ActionResult<ServiceResponse<Recipe>>> createRecipe(List<Recipe> recipes){
+            return Ok(await _recipeService.CreateRecipe(recipes));
         }
     }
 }

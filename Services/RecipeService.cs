@@ -67,10 +67,22 @@ namespace recipe_server.Services
 
         };
 
-        public List<Recipe> CreateRecipe(List<Recipe> recipes)
+        public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(List<Recipe> recipes)
         {
-            newRecipe.AddRange(recipes);
-            return newRecipe;
+            var serviceResponse = new ServiceResponse<List<Recipe>>();
+
+            try
+            {
+                newRecipe.AddRange(recipes);
+                serviceResponse.Data = newRecipe;
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+            return serviceResponse;
         }
 
         // public List<Recipe> GetIngredient(string[] ingredients)
@@ -87,16 +99,19 @@ namespace recipe_server.Services
         // }
 
 
-        public List<Recipe> GetRecipes()
+        public async Task<ServiceResponse<List<Recipe>>> GetRecipes()
         {
-            return (newRecipe);
+            var serviceResponse = new ServiceResponse<List<Recipe>>();
+            serviceResponse.Data = newRecipe;
+            return serviceResponse;
         }
 
-        public List<Recipe> GetRecipesByName(string name)
+        public async Task<ServiceResponse<List<Recipe>>> GetRecipesByName(string name)
         {
-            var bySearch = newRecipe.Where(c => c.Name.ToLower().Contains(name)).ToList();
+            var serviceResponse = new ServiceResponse<List<Recipe>>();
+            serviceResponse.Data = newRecipe.Where(c => c.Name.ToLower().Contains(name)).ToList();
 
-            return (bySearch);
+            return (serviceResponse);
         }
     }
 
