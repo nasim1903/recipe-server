@@ -67,6 +67,12 @@ namespace recipe_server.Services
 
         };
 
+        public List<Recipe> CreateRecipe(List<Recipe> recipes)
+        {
+            newRecipe.AddRange(recipes);
+            return newRecipe;
+        }
+
         // public List<Recipe> GetIngredient(string[] ingredients)
         // {
         //     List<Recipe> search = new List<Recipe> { };

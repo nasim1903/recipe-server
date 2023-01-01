@@ -34,5 +34,10 @@ namespace recipe_server.Controllers
         // {
         //     return Ok(_recipeService.GetIngredient(ingredients));
         // }
+
+        [HttpPost("post")]
+        public ActionResult<List<Recipe>> createRecipe(List<Recipe> recipes){
+            return Ok(_recipeService.CreateRecipe(recipes));
+        }
     }
 }
