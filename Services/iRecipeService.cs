@@ -9,5 +9,6 @@ namespace recipe_server.Services
     {
         public List<Recipe> GetRecipes();
         public List<Recipe> GetRecipesByName(string name);
+        // public List<Recipe> GetIngredient(string[] name);
     }
 }

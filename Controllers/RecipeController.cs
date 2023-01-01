@@ -24,10 +24,15 @@ namespace recipe_server.Controllers
         {
             return Ok(_recipeService.GetRecipes());
         }
-        [HttpGet("search")]
+        [HttpGet("search/name")]
         public ActionResult<Recipe> GetSearch(string name)
         {
             return Ok(_recipeService.GetRecipesByName(name));
         }
+        // [HttpGet("search/ingredient")]
+        // public ActionResult<Recipe> GetIngredient(string[] ingredients)
+        // {
+        //     return Ok(_recipeService.GetIngredient(ingredients));
+        // }
     }
 }

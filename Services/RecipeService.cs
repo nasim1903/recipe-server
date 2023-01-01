@@ -64,8 +64,22 @@ namespace recipe_server.Services
                     Protein = "2g"
                 }
             }
-            
+
         };
+
+        // public List<Recipe> GetIngredient(string[] ingredients)
+        // {
+        //     List<Recipe> search = new List<Recipe> { };
+
+        //     foreach (string i in ingredients)
+        //     {
+        //         var searchIng = newRecipe.Where(c => c.Ingredients == i.ToString());
+        //         search.AddRange(searchIng);
+        //     }
+
+        //     return search;
+        // }
+
 
         public List<Recipe> GetRecipes()
         {
@@ -73,9 +87,9 @@ namespace recipe_server.Services
         }
 
         public List<Recipe> GetRecipesByName(string name)
-        {   
+        {
             var bySearch = newRecipe.Where(c => c.Name.ToLower().Contains(name)).ToList();
-            
+
             return (bySearch);
         }
     }
