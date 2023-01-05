@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace recipe_server.Models
 {
+
+    [Keyless]
+    [NotMapped]  
     public class NutritionalInformation
     {
         public string? ServingSize { get; set; }
