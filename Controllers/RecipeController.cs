@@ -20,9 +20,9 @@ namespace recipe_server.Controllers
             _recipeService = recipeService;
         }
         [HttpGet]
-        public ActionResult<Recipe> Get()
+        public async Task<ActionResult<List<Recipe>>> Get()
         {
-            return Ok(_recipeService.GetRecipes());
+            return Ok(await _recipeService.GetRecipes());
         }
         [HttpGet("search/name")]
         public async Task<ActionResult<ServiceResponse<Recipe>>> GetSearch(string name)
