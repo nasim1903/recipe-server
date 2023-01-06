@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace recipe_server.Models
 {
-    [Keyless]
-    [NotMapped]
     public class Dietary
     {
+        public int id { get; set; }
+        public int RecipeId { get; set; }
         public bool vegan { get; set; }
         public bool vegetarian { get; set; }
         public bool glutenFree { get; set; }

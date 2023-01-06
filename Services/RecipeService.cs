@@ -2,11 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.Entity;
+
 
 namespace recipe_server.Services
 {
     public class RecipeService : iRecipeService
     {
+        private readonly DataC _context;
+        public RecipeService(DataC context)
+        {
+            _context = context;
+            
+        }
         List<Recipe> newRecipe = new List<Recipe>{
             new Recipe
             {
@@ -85,24 +93,12 @@ namespace recipe_server.Services
             return serviceResponse;
         }
 
-        // public List<Recipe> GetIngredient(string[] ingredients)
-        // {
-        //     List<Recipe> search = new List<Recipe> { };
-
-        //     foreach (string i in ingredients)
-        //     {
-        //         var searchIng = newRecipe.Where(c => c.Ingredients == i.ToString());
-        //         search.AddRange(searchIng);
-        //     }
-
-        //     return search;
-        // }
-
-
         public async Task<ServiceResponse<List<Recipe>>> GetRecipes()
         {
             var serviceResponse = new ServiceResponse<List<Recipe>>();
-            serviceResponse.Data = newRecipe;
+            _context.Add(newRecipe);
+
+            serviceResponse.Data = await _context.Recipes.ToListAsync();
             return serviceResponse;
         }
 
