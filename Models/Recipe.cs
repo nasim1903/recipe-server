@@ -15,10 +15,9 @@ namespace recipe_server.Models
         public string? Name { get; set; } 
         public List<Ingredient>? Ingredients { get; set; }
         public string? Instructions { get; set; }
-        [ForeignKey("RecipeId")]
         public NutritionalInformation? NutritionalInformation { get; set; }
-        public Dietary? dietary { get; set; }
-
+        public Dietary? Dietary { get; set; }
+        public User? Users { get; set; }
     }
 
 }

@@ -39,5 +39,10 @@ namespace recipe_server.Controllers
         public async Task<ActionResult<ServiceResponse<Recipe>>> createRecipe(List<Recipe> recipes){
             return Ok(await _recipeService.CreateRecipe(recipes));
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<List<Recipe>>> deleteRecipe(int id) {
+            return Ok(await _recipeService.DeleteRecipe(id));
+        }
     }
 }

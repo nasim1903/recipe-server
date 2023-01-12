@@ -33,6 +33,30 @@ namespace recipe_server.Services
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<List<Recipe>>> DeleteRecipe(int id)
+        {
+            var serviceResponse = new ServiceResponse<List<Recipe>>();
+
+            try
+            {
+                var DbRecipe = await _context.Recipes.FirstAsync(c => c.id == id);
+                var DbIngredients = await _context.Ingredients.FirstAsync(c => c.RecipeId == id);
+                _context.Remove(DbRecipe);
+                _context.Remove(DbIngredients);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Data = await _context.Recipes.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<List<Recipe>>> GetRecipes()
         {
             var serviceResponse = new ServiceResponse<List<Recipe>>();

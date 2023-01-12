@@ -15,6 +15,8 @@ namespace recipe_server
 
         public DbSet<Recipe> Recipes => Set<Recipe>();
         public DbSet<Ingredient> Ingredients => Set<Ingredient>();        
-        // public DbSet<NutritionalInformation> NutritionalInformation => Set<NutritionalInformation>();        
+        public DbSet<Dietary> Dietaries => Set<Dietary>();        
+        public DbSet<User> Users => Set<User>();        
+        public DbSet<NutritionalInformation> NutritionalInformation => Set<NutritionalInformation>();        
     }
 }
