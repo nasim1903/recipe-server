@@ -11,6 +11,5 @@ namespace recipe_server.Models
         public string UserName { get; set; } = string.Empty;
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public List<Recipe>? Favourites  { get; set; }        
     }
 }

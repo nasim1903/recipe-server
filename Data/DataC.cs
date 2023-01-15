@@ -13,10 +13,21 @@ namespace recipe_server
 
         }
 
+
         public DbSet<Recipe> Recipes => Set<Recipe>();
-        public DbSet<Ingredient> Ingredients => Set<Ingredient>();        
-        public DbSet<Dietary> Dietaries => Set<Dietary>();        
-        public DbSet<User> Users => Set<User>();        
-        public DbSet<NutritionalInformation> NutritionalInformation => Set<NutritionalInformation>();        
+        // public DbSet<Ingredient> Ingredients => Set<Ingredient>();
+        public DbSet<Dietary> Dietaries => Set<Dietary>();
+        public DbSet<User> Users => Set<User>();
+        public DbSet<NutritionalInformation> NutritionalInformations => Set<NutritionalInformation>();
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<Recipe>()
+        //     .HasOne(r => r.NutritionalInformation)
+        //     .WithOne(i => i.Recipe)
+        //     .HasForeignKey<NutritionalInformation>(i => i.RecipeId);
+
+        //     base.OnModelCreating(modelBuilder);
+        // }
+
     }
 }

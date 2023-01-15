@@ -36,7 +36,7 @@ namespace recipe_server.Controllers
         // }
 
         [HttpPost("post")]
-        public async Task<ActionResult<ServiceResponse<Recipe>>> createRecipe(List<Recipe> recipes){
+        public async Task<ActionResult<ServiceResponse<Recipe>>> createRecipe(Recipe recipes){
             return Ok(await _recipeService.CreateRecipe(recipes));
         }
 

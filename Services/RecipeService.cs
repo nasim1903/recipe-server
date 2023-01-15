@@ -15,15 +15,16 @@ namespace recipe_server.Services
 
         }
 
-        public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(List<Recipe> recipes)
+        public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(Recipe recipes)
         {
             var serviceResponse = new ServiceResponse<List<Recipe>>();
 
             try
             {
-                await _context.AddRangeAsync(recipes);
+                _context.Recipes.Add(recipes);
                 await _context.SaveChangesAsync();
                 serviceResponse.Data = await _context.Recipes.ToListAsync();
+
             }
             catch (Exception ex)
             {
@@ -40,10 +41,10 @@ namespace recipe_server.Services
 
             try
             {
-                var DbRecipe = await _context.Recipes.FirstAsync(c => c.id == id);
-                var DbIngredients = await _context.Ingredients.FirstAsync(c => c.RecipeId == id);
+                var DbRecipe = await _context.Recipes.FirstAsync(c => c.Id == id);
+                // var DbIngredients = await _context.Ingredients.FirstAsync(c => c.RecipeId == id);
                 _context.Remove(DbRecipe);
-                _context.Remove(DbIngredients);
+                // _context.Remove(DbIngredients);
                 await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.Recipes.ToListAsync();
