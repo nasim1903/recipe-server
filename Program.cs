@@ -3,6 +3,7 @@ using recipe_server.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using recipe_server;
+using recipe_server.Services.NutritionalInformations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataC>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<iRecipeService, RecipeService>();
+builder.Services.AddScoped<INutritionalInformationService, NutritionalInformationService>();
 
 var app = builder.Build();
 
