@@ -3,7 +3,6 @@ using recipe_server.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using recipe_server;
-using recipe_server.Services.NutritionalInformations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +15,6 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<iRecipeService, RecipeService>();
-builder.Services.AddScoped<INutritionalInformationService, NutritionalInformationService>();
 
 var app = builder.Build();
 

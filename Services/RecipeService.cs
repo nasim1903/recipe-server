@@ -21,20 +21,6 @@ namespace recipe_server.Services
 
             try
             {
-
-                NutritionalInformation nutritional = new NutritionalInformation
-                {
-                    ServingSize = recipes.NutritionalInformation.ServingSize,
-                    Calories = recipes.NutritionalInformation.Calories,
-                    Fat = recipes.NutritionalInformation.Fat,
-                    Sodium = recipes.NutritionalInformation.Sodium,
-                    Carbohydrates = recipes.NutritionalInformation.Carbohydrates,
-                    Fiber = recipes.NutritionalInformation.Fiber,
-                    Sugar = recipes.NutritionalInformation.Sugar,
-                    Protein = recipes.NutritionalInformation.Protein,
-                    Recipe = recipes
-                };
-
                 _context.Recipes.Add(recipes);
                 await _context.SaveChangesAsync();
                 serviceResponse.Data = await _context.Recipes.ToListAsync();

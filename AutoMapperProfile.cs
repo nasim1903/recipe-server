@@ -11,7 +11,7 @@ namespace recipe_server
     {
         public AutoMapperProfile()
         {
-            CreateMap<AddNutritionDto, NutritionalInformation>();
+
         }
     }
 }
