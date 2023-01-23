@@ -24,8 +24,8 @@ namespace recipe_server.Controllers
         {
             return Ok(await _recipeService.GetRecipes());
         }
-        [HttpGet("search/name")]
-        public async Task<ActionResult<ServiceResponse<Recipe>>> GetSearch(string name)
+        [HttpGet("search/{name}")]
+        public async Task<ActionResult<ServiceResponse<GetRecipeDto>>> GetSearch(string name)
         {
             return Ok(await _recipeService.GetRecipesByName(name));
         }
@@ -36,11 +36,11 @@ namespace recipe_server.Controllers
         // }
 
         [HttpPost("post")]
-        public async Task<ActionResult<ServiceResponse<Recipe>>> createRecipe(Recipe recipes){
+        public async Task<ActionResult<ServiceResponse<Recipe>>> createRecipe(List<Recipe> recipes){
             return Ok(await _recipeService.CreateRecipe(recipes));
         }
 
-        [HttpDelete]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult<List<Recipe>>> deleteRecipe(int id) {
             return Ok(await _recipeService.DeleteRecipe(id));
         }

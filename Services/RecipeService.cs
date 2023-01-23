@@ -15,13 +15,13 @@ namespace recipe_server.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(Recipe recipes)
+        public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(List<Recipe> recipes)
         {
             var serviceResponse = new ServiceResponse<List<Recipe>>();
 
             try
             {
-                _context.Recipes.Add(recipes);
+                _context.Recipes.AddRange(recipes);
                 await _context.SaveChangesAsync();
                 serviceResponse.Data = await _context.Recipes.ToListAsync();
 
@@ -42,9 +42,7 @@ namespace recipe_server.Services
             try
             {
                 var DbRecipe = await _context.Recipes.FirstAsync(c => c.Id == id);
-                // var DbIngredients = await _context.Ingredients.FirstAsync(c => c.RecipeId == id);
                 _context.Remove(DbRecipe);
-                // _context.Remove(DbIngredients);
                 await _context.SaveChangesAsync();
 
                 serviceResponse.Data = await _context.Recipes.ToListAsync();
@@ -93,12 +91,35 @@ namespace recipe_server.Services
 
         }
 
-
-        public async Task<ServiceResponse<List<Recipe>>> GetRecipesByName(string name)
+        public async Task<ServiceResponse<List<GetRecipeDto>>> GetRecipesByName(string name)
         {
-            var serviceResponse = new ServiceResponse<List<Recipe>>();
-            var DbRecipe = await _context.Recipes.Where(c => c.Name.ToLower().Contains(name)).ToListAsync();
-            serviceResponse.Data = DbRecipe;
+            var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
+            var recipes = await _context.Recipes.Where(c => c.Name.ToLower().Contains(name)).ToListAsync();
+            var recipeDtos = new List<GetRecipeDto>();
+
+            try
+            {
+
+                foreach (var recipe in recipes)
+                {
+                    var recipeDto = new GetRecipeDto();
+                    recipeDto.Id = recipe.Id;
+                    recipeDto.Name = recipe.Name;
+                    recipeDto.Ingredients = recipe.Ingredients.Split(",").Select(x => x.Trim()).ToList();
+                    recipeDto.Instructions = recipe.Instructions;
+                    recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
+                    recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
+
+                    recipeDtos.Add(recipeDto);
+
+                    serviceResponse.Data = recipeDtos;
+                }
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.success = false;
+                serviceResponse.Message = ex.Message;
+            }
 
             return serviceResponse;
         }
