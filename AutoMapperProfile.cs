@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using recipe_server.Dtos.NutritionalInformation;
+using recipe_server.Dtos.RecipeDtos;
 
 namespace recipe_server
 {
@@ -11,7 +11,7 @@ namespace recipe_server
     {
         public AutoMapperProfile()
         {
-
+            CreateMap<Recipe, GetRecipeDto>();
         }
     }
 }

@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using recipe_server.Dtos.RecipeDtos;
 
 namespace recipe_server.Services
 {
     public interface iRecipeService
     {
-        Task<ServiceResponse<List<Recipe>>> GetRecipes();
+        Task<ServiceResponse<List<GetRecipeDto>>> GetRecipes();
         Task<ServiceResponse<List<Recipe>>> GetRecipesByName(string name);
         Task<ServiceResponse<List<Recipe>>> CreateRecipe(Recipe recipes);
         Task<ServiceResponse<List<Recipe>>> DeleteRecipe(int id);

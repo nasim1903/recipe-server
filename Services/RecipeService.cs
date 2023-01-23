@@ -1,18 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using recipe_server.Dtos.RecipeDtos;
 
 namespace recipe_server.Services
 {
     public class RecipeService : iRecipeService
     {
         private readonly DataC _context;
-        public RecipeService(DataC context)
+        private readonly IMapper _mapper;
+
+        public RecipeService(DataC context, IMapper mapper)
         {
             _context = context;
-
+            _mapper = mapper;
         }
 
         public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(Recipe recipes)
@@ -58,11 +58,29 @@ namespace recipe_server.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<Recipe>>> GetRecipes()
+        public async Task<ServiceResponse<List<GetRecipeDto>>> GetRecipes()
         {
-            var serviceResponse = new ServiceResponse<List<Recipe>>();
-            serviceResponse.Data = await _context.Recipes.ToListAsync();
+
+            var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
+            var recipes = await _context.Recipes.ToListAsync();
+            var recipeDtos = new List<GetRecipeDto>();
+
+            foreach (var recipe in recipes)
+            {
+                var recipeDto = new GetRecipeDto();
+                recipeDto.Id = recipe.Id;
+                recipeDto.Name = recipe.Name;
+                recipeDto.Ingredients = recipe.Ingredients;
+                recipeDto.Instructions = recipe.Instructions;
+                recipeDto.NutritionalInformation = recipe.NutritionalInformation;
+                recipeDto.Dietary = recipe.Dietary;
+
+                recipeDtos.Add(recipeDto);
+            }
+
+            serviceResponse.Data = recipeDtos;
             return serviceResponse;
+
         }
 
         public async Task<ServiceResponse<List<Recipe>>> GetRecipesByName(string name)
