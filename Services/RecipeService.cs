@@ -65,23 +65,34 @@ namespace recipe_server.Services
             var recipes = await _context.Recipes.ToListAsync();
             var recipeDtos = new List<GetRecipeDto>();
 
-            foreach (var recipe in recipes)
+            try
             {
-                var recipeDto = new GetRecipeDto();
-                recipeDto.Id = recipe.Id;
-                recipeDto.Name = recipe.Name;
-                recipeDto.Ingredients = recipe.Ingredients;
-                recipeDto.Instructions = recipe.Instructions;
-                recipeDto.NutritionalInformation = recipe.NutritionalInformation;
-                recipeDto.Dietary = recipe.Dietary;
 
-                recipeDtos.Add(recipeDto);
+                foreach (var recipe in recipes)
+                {
+                    var recipeDto = new GetRecipeDto();
+                    recipeDto.Id = recipe.Id;
+                    recipeDto.Name = recipe.Name;
+                    recipeDto.Ingredients = recipe.Ingredients.Split(",").Select(x => x.Trim()).ToList();
+                    recipeDto.Instructions = recipe.Instructions;
+                    recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
+                    recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
+
+                    recipeDtos.Add(recipeDto);
+
+                    serviceResponse.Data = recipeDtos;
+                }
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.success = false;
+                serviceResponse.Message = ex.Message;
             }
 
-            serviceResponse.Data = recipeDtos;
             return serviceResponse;
 
         }
+
 
         public async Task<ServiceResponse<List<Recipe>>> GetRecipesByName(string name)
         {

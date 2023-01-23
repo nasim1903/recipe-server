@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using recipe_server.Dtos.RecipeDtos;
 using recipe_server.Models;
 using recipe_server.Services;
 
@@ -20,7 +20,7 @@ namespace recipe_server.Controllers
             _recipeService = recipeService;
         }
         [HttpGet]
-        public async Task<ActionResult<List<Recipe>>> Get()
+        public async Task<ActionResult<List<GetRecipeDto>>> Get()
         {
             return Ok(await _recipeService.GetRecipes());
         }
