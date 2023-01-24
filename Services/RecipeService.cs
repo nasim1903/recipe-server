@@ -72,7 +72,7 @@ namespace recipe_server.Services
                     recipeDto.Id = recipe.Id;
                     recipeDto.Name = recipe.Name;
                     recipeDto.Ingredients = recipe.Ingredients.Split(",").Select(x => x.Trim()).ToList();
-                    recipeDto.Instructions = recipe.Instructions;
+                    recipeDto.Instructions = recipe.Instructions.Split(".").Select(x => x.Trim()).ToList();
                     recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
                     recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
 
@@ -105,8 +105,8 @@ namespace recipe_server.Services
                     var recipeDto = new GetRecipeDto();
                     recipeDto.Id = recipe.Id;
                     recipeDto.Name = recipe.Name;
-                    recipeDto.Ingredients = recipe.Ingredients.Split(",").Select(x => x.Trim()).ToList();
-                    recipeDto.Instructions = recipe.Instructions;
+                    recipeDto.Ingredients = recipe.Ingredients.Split(".").Select(x => x.Trim()).ToList();
+                    recipeDto.Instructions = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
                     recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
                     recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
 
