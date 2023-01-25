@@ -35,6 +35,36 @@ namespace recipe_server.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<GetRecipeDto>> UpdateRecipe(Recipe updateRecipe, int id)
+        {
+            var serviceResponse = new ServiceResponse<GetRecipeDto>();
+            var recipes = await _context.Recipes.FirstOrDefaultAsync(c => c.Id == id);
+            var recipeDto = new GetRecipeDto();
+
+            try
+            {
+                _mapper.Map(updateRecipe, recipes);
+                await _context.SaveChangesAsync();
+                
+                recipeDto.Id = recipes.Id;
+                recipeDto.Name = recipes.Name;
+                recipeDto.Ingredients = recipes.Ingredients.Split(".").Select(x => x.Trim()).ToList();
+                recipeDto.Instructions = recipes.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
+                recipeDto.NutritionalInformation = recipes.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
+                recipeDto.Dietary = recipes.Dietary.Split(",").Select(x => x.Trim()).ToList();
+
+
+                serviceResponse.Data = recipeDto;
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<List<Recipe>>> DeleteRecipe(int id)
         {
             var serviceResponse = new ServiceResponse<List<Recipe>>();

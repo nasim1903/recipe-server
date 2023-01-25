@@ -44,5 +44,9 @@ namespace recipe_server.Controllers
         public async Task<ActionResult<List<Recipe>>> deleteRecipe(int id) {
             return Ok(await _recipeService.DeleteRecipe(id));
         }
+        [HttpPut("update/{id}")]
+        public async Task<ActionResult<GetRecipeDto>> updateRecipe(Recipe updateRecipe, int id) {
+            return Ok(await _recipeService.UpdateRecipe(updateRecipe, id));
+        }
     }
 }
