@@ -72,12 +72,31 @@ namespace recipe_server.Services
             }
             try
             {
-                recipes.Name = updateRecipe.Name;
-                recipes.Ingredients = updateRecipe.Ingredients;
-                recipes.Instructions = updateRecipe.Instructions;
-                recipes.NutritionalInformation = updateRecipe.NutritionalInformation;
-                recipes.Dietary = updateRecipe.Dietary;
-                recipes.ImgUrl = updateRecipe.ImgUrl;
+                if (updateRecipe.Name != string.Empty)
+                {
+                    recipes.Name = updateRecipe.Name;
+                }
+
+                if (updateRecipe.Ingredients != string.Empty)
+                {
+                    recipes.Ingredients = updateRecipe.Ingredients;
+                }
+                if (updateRecipe.Instructions != string.Empty)
+                {
+                    recipes.Instructions = updateRecipe.Instructions;
+                }
+                if (updateRecipe.NutritionalInformation != string.Empty)
+                {
+                    recipes.NutritionalInformation = updateRecipe.NutritionalInformation;
+                }
+                if (updateRecipe.Dietary != string.Empty)
+                {
+                    recipes.Dietary = updateRecipe.Dietary;
+                }
+                if (updateRecipe.ImgUrl != string.Empty)
+                {
+                    recipes.ImgUrl = updateRecipe.ImgUrl;
+                }
                 await _context.SaveChangesAsync();
 
                 serviceResponse.Data = MapToDto(recipes);
