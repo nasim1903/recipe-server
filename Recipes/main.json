@@ -83,6 +83,51 @@
         "instructions": "1) Heat a large pot over medium heat and add some oil. 2) Add the onion, garlic and sweet potatoes and cook for about 5 minutes or until softened. 3) Add the diced red bell pepper, tomato and spices and stir. 4) Pour in the vegetable broth and diced tomatoes and bring to a simmer. 5) Stir in the peanut butter, chickpeas and bring the stew to a simmer again. 6) Reduce the heat and let the stew simmer for about 20 minutes or until the vegetables are tender. 7) Season with salt and pepper to taste. 8) Serve the stew over rice or quinoa and garnish with chopped peanuts and cilantro",
         "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 350, Fat: 20g, Sodium: 534mg, Carbohydrates: 28g, Fiber: 6g, Sugar: 12g, Protein: 12g",
         "dietary": "Gluten-free, Vegan, High fiber, low-fat"
-    }
+    },
+
+
+    {
+        "name": "Spicy Szechuan Green Beans",
+        "ingredients": "Green beans: 1 lb, vegetable oil: 2 tbsp, garlic: 2 cloves, minced, ginger: 1 tsp, minced, red pepper flakes: 1 tsp, Szechuan peppercorns: 1 tsp, soy sauce: 1 tbsp, rice vinegar: 1 tbsp, sugar: 1 tsp, corn starch: 1 tsp, water: 2 tbsp",
+        "instructions": "1) Trim the ends of the green beans and cut them into 2-inch pieces. 2) Heat a large skillet or wok over high heat and add the vegetable oil. 3) Add the garlic, ginger, red pepper flakes, and Szechuan peppercorns and stir-fry for 30 seconds. 4) Add the green beans and stir-fry for 3-4 minutes or until they are tender-crisp. 5) In a small bowl, mix together the soy sauce, rice vinegar, sugar, corn starch, and water to make the sauce. 6) Add the sauce to the skillet and stir to coat the green beans. 7) Cook for an additional 1-2 minutes or until the sauce thickens. 8) Serve the Spicy Szechuan Green Beans as a side dish or over rice",
+        "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 100, Fat: 7g, Sodium: 534mg, Carbohydrates: 7g, Fiber: 2g, Sugar: 3g, Protein: 2g",
+        "dietary": "Gluten-free, Dairy-free, Vegan, Low-carb, Low-fat"
+    },
+    {
+        "name": "Japanese-style Chicken and Vegetable Curry",
+        "ingredients": "Boneless, skinless chicken breast: 2 (6 oz), chopped, onion: 1, diced, carrots: 2, diced, potatoes: 2, diced, garlic: 2 cloves, minced, ginger: 1 tsp, minced, curry powder: 2 tsp, flour: 2 tbsp, chicken broth: 2 cups, coconut milk: 1 cup, salt: 1/4 tsp, pepper: 1/4 tsp",
+        "instructions": "1) Heat a large pot over medium heat and add some oil. 2) Add the onions, garlic, ginger and cook until softened. 3) Add the chicken, curry powder, flour and stir until the chicken is browned. 4) Add the chicken broth, coconut milk, potatoes, carrots, salt and pepper and bring to a simmer. 5) Cover the pot and let it simmer for about 25 minutes or until the vegetables are tender. 6) Adjust the seasoning if needed and serve over rice",
+        "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 350, Fat: 20g, Sodium: 534mg, Carbohydrates: 28g, Fiber: 6g, Sugar: 12g, Protein: 20g",
+        "dietary": "Gluten-free, High protein, High-carb"
+    },
+    {
+        "name": "Tuna and Cucumber Salad",
+        "ingredients": "Tuna: 1 can drained, Cucumber: 1 medium, sliced, red onion: 1/4 cup, thinly sliced, Rice vinegar: 2 tbsp, Soy sauce: 1 tsp, Sesame oil: 1 tsp, Sugar: 1 tsp, Salt: 1/4 tsp, Pepper: 1/4 tsp, Sesame seeds: 1 tbsp, chopped green onions: 1 tbsp",
+        "instructions": "1) Drain the tuna and flake it into small pieces. 2) Cut the cucumber in half lengthwise, then thinly slice them. 3) In a small bowl, mix together the rice vinegar, soy sauce, sesame oil, sugar, salt, and pepper to make the dressing. 4) In a large bowl, add the tuna, cucumber, and red onion. 5) Pour the dressing over the tuna mixture and toss to coat. 6) Sprinkle the sesame seeds and green onions over the top",
+        "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 120, Fat: 5g, Sodium: 534mg, Carbohydrates: 6g, Fiber: 1g, Sugar: 3g, Protein: 15g",
+        "dietary": "Gluten-free, Dairy-free, Low-carb, Low-fat, High protein"
+    },
+    {
+        "name": "Swedish Meatballs with Lingonberry Sauce",
+        "ingredients": "Ground beef: 1 lb, ground pork: 1/2 lb, breadcrumbs: 1/4 cup, onion: 1/2 cup, grated, garlic: 2 cloves, minced, egg: 1, salt: 1 tsp, pepper: 1/4 tsp, allspice: 1/4 tsp, butter: 2 tbsp, beef broth: 1 cup, heavy cream: 1/2 cup, lingonberry preserves: 1/4 cup, xanthan gum: 1 tsp",
+        "instructions": "1) In a large mixing bowl, combine the ground beef, ground pork, breadcrumbs, onion, garlic, egg, salt, pepper, and allspice. Mix everything together until well combined. 2) Form the mixture into small meatballs. 3) In a large skillet, melt the butter over medium heat. 4) Add the meatballs and cook until browned on all sides. 5) Remove the meatballs from the skillet and set them aside. 6) In the same skillet, add the beef broth and bring it to a simmer. 7) Stir in the heavy cream and lingonberry preserves. 8) Let the sauce simmer for about 5 minutes. 9) Remove the skillet from the heat and stir in the xanthan gum. 10) Return the meatballs to the skillet and toss to coat them in the sauce",
+        "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 350, Fat: 20g, Sodium: 534mg, Carbohydrates: 10g, Fiber: 1g, Sugar: 3g, Protein: 30g",
+        "dietary": "Low-sugar, Gluten-free"
+    },
+    {
+        "name": "Vietnamese Beef and Vegetable Stir-fry",
+        "ingredients": "Beef sirloin: 1 lb, sliced, vegetables of your choice: 3 cups, sliced (such as bell peppers, onions, carrots, mushrooms), garlic: 4 cloves, minced, ginger: 2 tsp, minced, oyster sauce: 2 tbsp, soy sauce: 1 tbsp, sugar: 1 tsp, corn starch: 1 tsp, water: 2 tbsp, cooked rice: 4 cups",
+        "instructions": "1) Heat a large skillet or wok over high heat and add some oil. 2) Add the beef and stir-fry for 3-4 minutes or until browned. 3) Remove the beef from the skillet and set it aside. 4) Add the vegetables, garlic, ginger to the skillet and stir-fry for 3-4 minutes or until they are tender-crisp. 5) In a small bowl, mix together the oyster sauce, soy sauce, sugar, corn starch, and water to make the sauce. 6) Add the sauce to the skillet and stir to coat the vegetables. 7) Add the beef back to the skillet and stir-fry for an additional 1-2 minutes or until everything is heated through. 8) Serve the stir-fry over cooked rice",
+        "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 400, Fat: 20g, Sodium: 534mg, Carbohydrates: 30g, Fiber: 3g, Sugar: 6g, Protein: 32g",
+        "dietary": "Gluten-free, High protein, High-carb, Low-fat"
+    },
+    {
+        "name": "Vietnamese Shrimp and Herb Salad",
+        "ingredients": "Shrimp: 1 lb, peeled and deveined, mixed greens: 4 cups, mint: 1/2 cup, chopped, cilantro: 1/2 cup, chopped, basil: 1/4 cup, chopped, red onion: 1/4 cup, thinly sliced, lime: 2, juiced, fish sauce: 2 tbsp, sugar: 1 tsp, chili flakes: 1 tsp, salt and pepper to taste",
+        "instructions": "1) Cook the shrimp in a skillet over medium heat until pink and cooked through. 2) Remove the shrimp from the skillet and set it aside to cool. 3) In a large bowl, combine mixed greens, mint, cilantro, basil, red onion, and cooled shrimp. 4) In a small bowl, mix together the lime juice, fish sauce, sugar, chili flakes, salt, and pepper to make the dressing. 5) Pour the dressing over the salad and toss to combine. 6) Serve the salad chilled",
+        "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 150, Fat: 2g, Sodium: 534mg, Carbohydrates: 10g, Fiber: 3g, Sugar: 3g, Protein: 20g",
+        "dietary": "Gluten-free, Low-carb, Low-fat, High protein"
+     }
+
         
 ]

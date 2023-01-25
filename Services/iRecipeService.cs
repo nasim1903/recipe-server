@@ -10,8 +10,8 @@ namespace recipe_server.Services
     {
         Task<ServiceResponse<List<GetRecipeDto>>> GetRecipes();
         Task<ServiceResponse<List<GetRecipeDto>>> GetRecipesByName(string name);
-        Task<ServiceResponse<List<Recipe>>> CreateRecipe(List<Recipe> recipes);
-        Task<ServiceResponse<List<Recipe>>> DeleteRecipe(int id);
+        Task<ServiceResponse<List<GetRecipeDto>>> CreateRecipe(List<Recipe> recipes);
+        Task<ServiceResponse<List<GetRecipeDto>>> DeleteRecipe(int id);
         Task<ServiceResponse<GetRecipeDto>> UpdateRecipe(Recipe updateRecipe, int id);
         
         // public List<Recipe> GetIngredient(string[] name);

@@ -15,15 +15,38 @@ namespace recipe_server.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<List<Recipe>>> CreateRecipe(List<Recipe> recipes)
+        public static GetRecipeDto MapToDto(Recipe recipe)
         {
-            var serviceResponse = new ServiceResponse<List<Recipe>>();
+            var recipeDto = new GetRecipeDto();
+            recipeDto.Id = recipe.Id;
+            recipeDto.Name = recipe.Name;
+            recipeDto.Ingredients = recipe.Ingredients.Split(",").Select(x => x.Trim()).ToList();
+            recipeDto.Instructions = recipe.Instructions.Split(".").Select(x => x.Trim()).ToList();
+            recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
+            recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
+            return recipeDto;
+        }
+
+        public List<GetRecipeDto> MapToDtoList(List<Recipe> recipes)
+        {
+            var recipeDtos = new List<GetRecipeDto>();
+            foreach (var recipe in recipes)
+            {
+                recipeDtos.Add(MapToDto(recipe));
+            }
+            return recipeDtos;
+        }
+
+        public async Task<ServiceResponse<List<GetRecipeDto>>> CreateRecipe(List<Recipe> recipes)
+        {
+            var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
+            var recipe = await _context.Recipes.ToListAsync();
 
             try
             {
                 _context.Recipes.AddRange(recipes);
                 await _context.SaveChangesAsync();
-                serviceResponse.Data = await _context.Recipes.ToListAsync();
+                serviceResponse.Data = MapToDtoList(recipe);
 
             }
             catch (Exception ex)
@@ -39,22 +62,17 @@ namespace recipe_server.Services
         {
             var serviceResponse = new ServiceResponse<GetRecipeDto>();
             var recipes = await _context.Recipes.FirstOrDefaultAsync(c => c.Id == id);
-            var recipeDto = new GetRecipeDto();
-
+            if (recipes == null)
+            {
+                serviceResponse.success = false;
+                serviceResponse.Message = "Recipe not found";
+                return serviceResponse;
+            }
             try
             {
                 _mapper.Map(updateRecipe, recipes);
                 await _context.SaveChangesAsync();
-                
-                recipeDto.Id = recipes.Id;
-                recipeDto.Name = recipes.Name;
-                recipeDto.Ingredients = recipes.Ingredients.Split(".").Select(x => x.Trim()).ToList();
-                recipeDto.Instructions = recipes.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
-                recipeDto.NutritionalInformation = recipes.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
-                recipeDto.Dietary = recipes.Dietary.Split(",").Select(x => x.Trim()).ToList();
-
-
-                serviceResponse.Data = recipeDto;
+                serviceResponse.Data = MapToDto(recipes);
             }
             catch (Exception ex)
             {
@@ -65,17 +83,17 @@ namespace recipe_server.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<Recipe>>> DeleteRecipe(int id)
+        public async Task<ServiceResponse<List<GetRecipeDto>>> DeleteRecipe(int id)
         {
-            var serviceResponse = new ServiceResponse<List<Recipe>>();
-
+            var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
+            var recipes = await _context.Recipes.ToListAsync();
             try
             {
                 var DbRecipe = await _context.Recipes.FirstAsync(c => c.Id == id);
                 _context.Remove(DbRecipe);
                 await _context.SaveChangesAsync();
 
-                serviceResponse.Data = await _context.Recipes.ToListAsync();
+                serviceResponse.Data = MapToDtoList(recipes);
             }
             catch (Exception ex)
             {
@@ -91,25 +109,10 @@ namespace recipe_server.Services
 
             var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
             var recipes = await _context.Recipes.ToListAsync();
-            var recipeDtos = new List<GetRecipeDto>();
-
             try
             {
 
-                foreach (var recipe in recipes)
-                {
-                    var recipeDto = new GetRecipeDto();
-                    recipeDto.Id = recipe.Id;
-                    recipeDto.Name = recipe.Name;
-                    recipeDto.Ingredients = recipe.Ingredients.Split(",").Select(x => x.Trim()).ToList();
-                    recipeDto.Instructions = recipe.Instructions.Split(".").Select(x => x.Trim()).ToList();
-                    recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
-                    recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
-
-                    recipeDtos.Add(recipeDto);
-
-                    serviceResponse.Data = recipeDtos;
-                }
+                serviceResponse.Data = MapToDtoList(recipes);
             }
             catch (Exception ex)
             {
@@ -125,25 +128,12 @@ namespace recipe_server.Services
         {
             var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
             var recipes = await _context.Recipes.Where(c => c.Name.ToLower().Contains(name)).ToListAsync();
-            var recipeDtos = new List<GetRecipeDto>();
 
             try
             {
 
-                foreach (var recipe in recipes)
-                {
-                    var recipeDto = new GetRecipeDto();
-                    recipeDto.Id = recipe.Id;
-                    recipeDto.Name = recipe.Name;
-                    recipeDto.Ingredients = recipe.Ingredients.Split(".").Select(x => x.Trim()).ToList();
-                    recipeDto.Instructions = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
-                    recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
-                    recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
+                serviceResponse.Data = MapToDtoList(recipes);
 
-                    recipeDtos.Add(recipeDto);
-
-                    serviceResponse.Data = recipeDtos;
-                }
             }
             catch (Exception ex)
             {
@@ -153,6 +143,7 @@ namespace recipe_server.Services
 
             return serviceResponse;
         }
+
     }
 
 }
