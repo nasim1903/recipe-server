@@ -13,7 +13,7 @@ namespace recipe_server.Services
         Task<ServiceResponse<List<GetRecipeDto>>> CreateRecipe(List<Recipe> recipes);
         Task<ServiceResponse<List<GetRecipeDto>>> DeleteRecipe(int id);
         Task<ServiceResponse<GetRecipeDto>> UpdateRecipe(Recipe updateRecipe, int id);
+        // Task<ServiceResponse<GetRecipeDto>> GetRecipeByIngredient(List<string> ingredients);
         
-        // public List<Recipe> GetIngredient(string[] name);
     }
 }

@@ -127,7 +127,14 @@
         "instructions": "1) Cook the shrimp in a skillet over medium heat until pink and cooked through. 2) Remove the shrimp from the skillet and set it aside to cool. 3) In a large bowl, combine mixed greens, mint, cilantro, basil, red onion, and cooled shrimp. 4) In a small bowl, mix together the lime juice, fish sauce, sugar, chili flakes, salt, and pepper to make the dressing. 5) Pour the dressing over the salad and toss to combine. 6) Serve the salad chilled",
         "nutritionalInformation": "Serving Size: 1 cup (246g), Calories: 150, Fat: 2g, Sodium: 534mg, Carbohydrates: 10g, Fiber: 3g, Sugar: 3g, Protein: 20g",
         "dietary": "Gluten-free, Low-carb, Low-fat, High protein"
-     }
+     },
+     {
+        "name": "Spaghetti with Meatballs",
+        "ingredients": "Spaghetti: 1 lb, Meatballs: 1 lb (ground beef, breadcrumbs, grated Parmesan, minced onion, minced garlic, egg, salt, pepper, parsley), tomato sauce: 2 cups, grated Parmesan cheese: 1/2 cup, chopped fresh parsley: 2 tbsp",
+        "instructions": "1) Cook the spaghetti according to the package instructions. Drain and set aside. 2) In a large mixing bowl, combine the ground beef, breadcrumbs, grated Parmesan, minced onion, minced garlic, egg, salt, pepper, and parsley. Mix everything together until well combined. 3) Form the mixture into small meatballs. 4) In a large skillet, brown the meatballs in some oil over medium heat. 5) Once browned, add the tomato sauce to the skillet and bring it to a simmer. 6) Let the sauce simmer for about 10 minutes, or until the meatballs are cooked through. 7) Serve the meatballs and sauce over the cooked spaghetti, and sprinkle with grated Parmesan cheese and chopped parsley",
+        "nutritionalInformation": "Serving Size: 1 plate (246g), Calories: 500, Fat: 20g, Sodium: 534mg, Carbohydrates: 40g, Fiber: 4g, Sugar: 7g, Protein: 30g",
+        "dietary": "Gluten-free, High protein, High-carb"
+    }
 
         
 ]

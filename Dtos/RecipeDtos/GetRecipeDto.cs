@@ -13,5 +13,6 @@ namespace recipe_server.Dtos.RecipeDtos
         public List<string>? Instructions { get; set; }
         public List<string>? NutritionalInformation { get; set; }
         public List<string>? Dietary { get; set; }        
+        public string? ImgUrl { get; set; }        
     }
 }

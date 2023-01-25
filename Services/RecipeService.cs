@@ -17,6 +17,7 @@ namespace recipe_server.Services
 
         public static GetRecipeDto MapToDto(Recipe recipe)
         {
+
             var recipeDto = new GetRecipeDto();
             recipeDto.Id = recipe.Id;
             recipeDto.Name = recipe.Name;
@@ -24,6 +25,7 @@ namespace recipe_server.Services
             recipeDto.Instructions = recipe.Instructions.Split(".").Select(x => x.Trim()).ToList();
             recipeDto.NutritionalInformation = recipe.NutritionalInformation.Split(",").Select(x => x.Trim()).ToList();
             recipeDto.Dietary = recipe.Dietary.Split(",").Select(x => x.Trim()).ToList();
+            recipeDto.ImgUrl = recipe.ImgUrl;
             return recipeDto;
         }
 
@@ -70,8 +72,14 @@ namespace recipe_server.Services
             }
             try
             {
-                _mapper.Map(updateRecipe, recipes);
+                recipes.Name = updateRecipe.Name;
+                recipes.Ingredients = updateRecipe.Ingredients;
+                recipes.Instructions = updateRecipe.Instructions;
+                recipes.NutritionalInformation = updateRecipe.NutritionalInformation;
+                recipes.Dietary = updateRecipe.Dietary;
+                recipes.ImgUrl = updateRecipe.ImgUrl;
                 await _context.SaveChangesAsync();
+
                 serviceResponse.Data = MapToDto(recipes);
             }
             catch (Exception ex)
@@ -131,7 +139,6 @@ namespace recipe_server.Services
 
             try
             {
-
                 serviceResponse.Data = MapToDtoList(recipes);
 
             }
@@ -144,6 +151,10 @@ namespace recipe_server.Services
             return serviceResponse;
         }
 
+        // public async Task<ServiceResponse<GetRecipeDto>> GetRecipeByIngredient(List<string> ingredients){
+        //     var serviceResponse = new ServiceResponse<List<GetRecipeDto>>();
+        //     var recipes = await _context.Recipes.Where(c => c.Ingredients.ToLower().Contains(ingredients)).ToListAsync();
+        // }
     }
 
 }
