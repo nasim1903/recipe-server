@@ -15,7 +15,7 @@ namespace recipe_server
 
 
         public DbSet<Recipe> Recipes => Set<Recipe>();
-        public DbSet<User> Users => Set<User>();
+        // public DbSet<User> Users => Set<User>();
 
     }
 }

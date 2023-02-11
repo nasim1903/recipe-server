@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net6.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/c5121b1e-40d4-4457-ad54-719335601a0a/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/PurePlate"
+}
