@@ -10,8 +10,9 @@ namespace recipe_server
     {
         public DataC(DbContextOptions<DataC> options) : base(options)
         {
-
+         Database.EnsureCreated();
         }
+
 
 
         public DbSet<Recipe> Recipes => Set<Recipe>();
